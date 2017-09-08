@@ -174,7 +174,7 @@ public class OntoExporter {
 	private OWLIndividual addCommit(Commit commit, OWLIndividual committerInd) {
 		// adds a commit individual
 		OWLClass commitClazz = factory.getOWLClass(":Commit", repositoriesPrefix);
-		OWLIndividual commitInd = factory.getOWLNamedIndividual(generateUid(), oceanPrefix);
+		OWLIndividual commitInd = factory.getOWLNamedIndividual(commit.getId(), oceanPrefix);
 		OWLClassAssertionAxiom commitAssertion = factory.getOWLClassAssertionAxiom(commitClazz, commitInd);
 		manager.addAxiom(onto, commitAssertion);
 		// date of the commit

@@ -11,9 +11,7 @@ import javax.swing.JFileChooser;
 
 import org.repositoryminer.codesmell.direct.BrainClass;
 import org.repositoryminer.codesmell.direct.BrainMethod;
-import org.repositoryminer.codesmell.direct.ComplexMethod;
 import org.repositoryminer.codesmell.direct.DataClass;
-import org.repositoryminer.codesmell.direct.FeatureEnvy;
 import org.repositoryminer.codesmell.direct.GodClass;
 import org.repositoryminer.codesmell.direct.LongMethod;
 import org.repositoryminer.listener.mining.IMiningListener;
@@ -37,7 +35,7 @@ public class Frame extends UI implements IMiningListener, IExportProgressListene
 
 	private static final String TITLE = "OCEAN v0.1";
 	// TODO no hardcoded definitions expected for stable releases
-	private static final String DEFAULT_PROJECT = "/misc/workspace/doutorado/workspaces/visminer/repos/RxJava";
+	private static final String DEFAULT_PROJECT = "/misc/workspace/doutorado/workspaces/repos/guava";
 
 	private Properties props;
 	private RepositoryMiner miner;
@@ -77,7 +75,7 @@ public class Frame extends UI implements IMiningListener, IExportProgressListene
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				selectProject.setEnabled(false);
-				branches.setEnabled(false);
+				tags.setEnabled(false);
 				mineit.setEnabled(false);
 
 				Thread t = new Thread(getThis());
@@ -121,16 +119,16 @@ public class Frame extends UI implements IMiningListener, IExportProgressListene
 		miner.addDirectCodeSmell(new BrainClass());
 		miner.addDirectCodeSmell(new LongMethod());
 		miner.addDirectCodeSmell(new BrainMethod());
-		miner.addDirectCodeSmell(new FeatureEnvy());
-		miner.addDirectCodeSmell(new ComplexMethod());
+		// miner.addDirectCodeSmell(new FeatureEnvy());
+		// miner.addDirectCodeSmell(new ComplexMethod());
 		// fill branches in selection combo
 		ISCM scm = SCMFactory.getSCM(miner.getScm());
 		scm.open(getProjectPath());
 		
-		branches.removeAllItems();
+		tags.removeAllItems();
 		for (Reference ref : scm.getReferences()) {
 			if (ref.getType().equals(ReferenceType.TAG)) {
-				branches.addItem(ref.getName());
+				tags.addItem(ref.getName());
 			}
 		}
 		
@@ -141,7 +139,7 @@ public class Frame extends UI implements IMiningListener, IExportProgressListene
 	public void run() {
 		try {
 			miner.getReferences().clear();
-			miner.addReference(branches.getSelectedItem().toString(), ReferenceType.TAG);
+			miner.addReference(tags.getSelectedItem().toString(), ReferenceType.TAG);
 
 			Repository repository = miner.mine();
 
@@ -157,7 +155,7 @@ public class Frame extends UI implements IMiningListener, IExportProgressListene
 			log("ERROR: " + e.getMessage());
 		} finally {
 			selectProject.setEnabled(true);
-			branches.setEnabled(true);
+			tags.setEnabled(true);
 			mineit.setEnabled(true);			
 		}
 	}
