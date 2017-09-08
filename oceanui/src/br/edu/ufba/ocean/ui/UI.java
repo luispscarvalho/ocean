@@ -34,10 +34,10 @@ public class UI extends javax.swing.JDialog {
         selectProject = new javax.swing.JButton();
         mineit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        branches = new javax.swing.JComboBox();
+        tags = new javax.swing.JComboBox();
         progressinfo = new javax.swing.JLabel();
 
-        setTitle("OCEAN - v1.0");
+        setTitle("OCEANPopulator - v1.0");
         setName("oceanFrame"); // NOI18N
 
         log.setColumns(20);
@@ -59,11 +59,11 @@ public class UI extends javax.swing.JDialog {
 
         mineit.setText("mine it!");
 
-        jLabel1.setText("Choose a branch:");
+        jLabel1.setText("Choose a tag:");
 
-        branches.addActionListener(new java.awt.event.ActionListener() {
+        tags.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                branchesActionPerformed(evt);
+                tagsActionPerformed(evt);
             }
         });
 
@@ -85,7 +85,7 @@ public class UI extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(branches, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(tags, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -104,7 +104,7 @@ public class UI extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mineit)
                     .addComponent(jLabel1)
-                    .addComponent(branches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tags, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -121,9 +121,9 @@ public class UI extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectProjectActionPerformed
 
-    private void branchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchesActionPerformed
+    private void tagsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_branchesActionPerformed
+    }//GEN-LAST:event_tagsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,7 +161,6 @@ public class UI extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JComboBox branches;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     protected javax.swing.JTextArea log;
@@ -170,5 +169,6 @@ public class UI extends javax.swing.JDialog {
     protected javax.swing.JLabel progressinfo;
     protected javax.swing.JLabel project;
     protected javax.swing.JButton selectProject;
+    protected javax.swing.JComboBox tags;
     // End of variables declaration//GEN-END:variables
 }
